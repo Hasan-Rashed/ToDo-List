@@ -16,9 +16,13 @@ const setGoals = asyncHandler(async (req, res) => {
         res.status(400)
         throw new Error('Please add a text field')
     }
+
+    const goal = await Goal.create({
+        text: req.body.text
+    })
     
     res.status(200)
-    .json({ success: true, message: "Set goal" })
+    .json(goal)
 })
 
 // using express-async-handler to handle errors instead of try catch blocks

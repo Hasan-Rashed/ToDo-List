@@ -1,5 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const { errorHandler } = require('./middleware/errorMiddleware');
 
 
 dotenv.config();
@@ -15,5 +16,9 @@ app.use(express.urlencoded({ extended: false }));
 
 
 app.use('/api/goals', require('./routes/goalRoutes'))
+
+
+// override the default error handler of express
+app.use(errorHandler);
 
 app.listen(port, () => console.log(`Server started on port ${port}`));

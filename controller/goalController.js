@@ -1,10 +1,13 @@
 const asyncHandler = require('express-async-handler'); 
+const Goal = require('../model/goalModel');
 
 
 // using express-async-handler to handle errors instead of try catch blocks
 const getGoals = asyncHandler(async (req, res) => {
+    const goals = await Goal.find();
+    
     res.status(200)
-    .json({ success: true, data: [{ "id": 1, "name": "Goal 1" }, { "id": 2, "name": "Goal 2" }] })
+    .json(goals)
 })
 
 // using express-async-handler to handle errors instead of try catch blocks

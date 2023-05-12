@@ -27,8 +27,18 @@ const setGoals = asyncHandler(async (req, res) => {
 
 // using express-async-handler to handle errors instead of try catch blocks
 const updateGoal = asyncHandler(async (req, res) => {
+    // find the id of the goal by req.params.id
+    const goal = await Goal.findById(req.params.id);
+
+    if(!goal){
+        res.status(400)
+        throw new Error('Goal not found')
+    }
+
+    const updatedGoal = await Goal.findByIdAndUpdate(req.params.id, req.body, {new: true})
+
     res.status(200)
-    .json({ success: true, message: `Update goal ${req.params.id}` })
+    .json({ success: true, updatedGoal })
 })
 
 // using express-async-handler to handle errors instead of try catch blocks

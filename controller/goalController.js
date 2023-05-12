@@ -46,7 +46,6 @@ const deleteGoal = asyncHandler(async (req, res) => {
 
     // find the id of the goal by req.params.id
     const goal = await Goal.findById(req.params.id);
-    console.log(req.params.id);
 
     if(!goal){
         res.status(400)

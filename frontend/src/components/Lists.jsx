@@ -6,9 +6,22 @@ import { Link } from 'react-router-dom';
 
 const Lists = ({ text, id }) => {
 
+  /* This code block is checking the value of the `VITE_NODE_ENV` environment
+  variable. If it is set to `'development'`, it sets the `url` variable to the
+  value of the `VITE_PRIVATE_URL` environment variable plus the string
+  `'/api/goals'`. If it is set to `'production'`, it sets the `url` variable to
+  the string `'https://todo-app-2021.herokuapp.com/api/goals'`. This allows the
+  code to use different URLs for the API depending on whether it is running in a
+  development or production environment. */
+  if(import.meta.env.VITE_NODE_ENV === 'development'){
+    var url = import.meta.env.VITE_PRIVATE_URL+`/api/goals/${id}`;
+  }else if(import.meta.env.VITE_NODE_ENV === 'production'){
+    var url = import.meta.env.VITE_PUBLIC_URL;
+  }
 
-  /* This code defines a function called `handleDelete` that sends a DELETE
-  request to a specified endpoint using the axios library. The endpoint is
+
+
+  /*`handleDelete` sends a DELETE request to a specified endpoint using the axios library. The endpoint is
   specified using a template literal that includes the `id` parameter passed to
   the function. The function is marked as `async` to allow the use of `await`
   when making the request. If the request is successful, the response data is
@@ -16,9 +29,9 @@ const Lists = ({ text, id }) => {
   console. */
   const handleDelete = async () => {
     try {
-      const response = await axios.delete(`http://localhost:5000/api/goals/${id}`);
+      const response = await axios.delete(url);
       // Handle the response if needed
-      // console.log(response.data);
+      console.log(response.data);
       console.log('Deleted', id);
     } catch (error) {
       // Handle the error if needed

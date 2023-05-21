@@ -13,6 +13,21 @@ const UpdateToDo = () => {
     // Get the id param from the URL.
     const { id } = useParams();
 
+
+        /* This code block is checking the value of the `VITE_NODE_ENV` environment
+    variable. If it is set to `'development'`, it sets the `url` variable to the
+    value of the `VITE_PRIVATE_URL` environment variable plus the string
+    `'/api/goals'`. If it is set to `'production'`, it sets the `url` variable to
+    the string `'https://todo-app-2021.herokuapp.com/api/goals'`. This allows the
+    code to use different URLs for the API depending on whether it is running in a
+    development or production environment. */
+    if(import.meta.env.VITE_NODE_ENV === 'development'){
+        var url = import.meta.env.VITE_PRIVATE_URL+`/api/goals/${id}`;
+    }else if(import.meta.env.VITE_NODE_ENV === 'production'){
+        var url = import.meta.env.VITE_PUBLIC_URL;
+    }
+
+
 /* Used to programmatically navigate to a different route in the application. */
     const navigate = useNavigate();
 
@@ -22,7 +37,7 @@ const UpdateToDo = () => {
      */
     const handleUpdateRequest = async () => {
         try {
-        const response = await axios.put(`http://localhost:5000/api/goals/${id}`, { text });
+        const response = await axios.put(url, { text });
         // Handle the response if needed
         console.log(response.data);
         console.log(text);

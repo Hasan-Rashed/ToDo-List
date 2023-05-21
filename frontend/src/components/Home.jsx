@@ -13,7 +13,19 @@ const Home = () => {
   const [text, setText] = useState('');
   const [loading, setLoading] = useState(true);
 
-  const url = `http://localhost:5000/api/goals/`;
+  /* This code block is checking the value of the `VITE_NODE_ENV` environment
+  variable. If it is set to `'development'`, it sets the `url` variable to the
+  value of the `VITE_PRIVATE_URL` environment variable plus the string
+  `'/api/goals'`. If it is set to `'production'`, it sets the `url` variable to
+  the string `'https://todo-app-2021.herokuapp.com/api/goals'`. This allows the
+  code to use different URLs for the API depending on whether it is running in a
+  development or production environment. */
+  if(import.meta.env.VITE_NODE_ENV === 'development'){
+    var url = import.meta.env.VITE_PRIVATE_URL+`/api/goals`;
+  }else if(import.meta.env.VITE_NODE_ENV === 'production'){
+    var url = import.meta.env.VITE_PUBLIC_URL;
+  }
+
 
  /**
   * This function fetches data from a specified URL using axios and sets the

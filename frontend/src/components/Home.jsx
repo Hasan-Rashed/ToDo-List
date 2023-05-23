@@ -4,6 +4,7 @@ import Lists from './Lists';
 import axios from 'axios';
 import { DataProvider } from '../context/Context';
 import { HashLoader } from 'react-spinners';
+import { Link } from 'react-router-dom';
 
 
 
@@ -92,7 +93,7 @@ const Home = () => {
               </ul>
           </div>
 
-          <footer className='text-sm md:text-lg lg:text-xl' >&copy; 2023 Hasan-Rashed</footer>
+          <footer className='text-sm md:text-lg lg:text-xl text-black'>&copy; 2023<Link to='https://github.com/Hasan-Rashed' className='text-blue-600' > Hasan-Rashed</Link></footer>
         </div> 
       )
       }

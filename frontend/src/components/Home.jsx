@@ -32,10 +32,11 @@ const Home = () => {
   */
   const fetchData = async () => {
     try {
-      const response = await axios.get(url+`/api/goals`);
+      const response = await axios.get('https://todo-list-backend.up.railway.app/api/goals');
       setData(response.data);
       setLoading(false);
-      // console.log(response.data);
+      console.log(response.data);
+      console.log(url);
     } catch (error) {
       console.log(error);
     }
@@ -48,7 +49,7 @@ const Home = () => {
    */
   const handlePostRequest = async () => {
     try {
-      const response = await axios.post(url, { text });
+      const response = await axios.post('https://todo-list-backend.up.railway.app/api/goals', { text });
       console.log(response.data); // Process the response data
 
       // clear the text field

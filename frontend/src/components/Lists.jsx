@@ -16,7 +16,7 @@ const Lists = ({ text, id }) => {
   if(import.meta.env.VITE_NODE_ENV === 'development'){
     var url = import.meta.env.VITE_PRIVATE_URL+`/api/goals/${id}`;
   }else if(import.meta.env.VITE_NODE_ENV === 'production'){
-    var url = import.meta.env.VITE_PUBLIC_URL;
+    var url = import.meta.env.VITE_PUBLIC_URL+`/api/goals/${id}`;
   }
 
 

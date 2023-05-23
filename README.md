@@ -3,7 +3,7 @@ Here's a sample README file for a MERN (MongoDB, Express, React, Node.js) projec
 
 # MERN Todo List
 
-This is a simple todo list application built using the MERN stack. It allows users to create and manage tasks that they need to complete.
+This is a simple todo list application built using the MERN stack and Vite.js. It allows users to create and manage tasks that they need to complete.
 
 ## Installation
 

@@ -91,6 +91,8 @@ const Home = () => {
                 }
               </ul>
           </div>
+
+          <footer className='text-sm md:text-lg lg:text-xl' >&copy; 2023 Hasan-Rashed</footer>
         </div> 
       )
       }

@@ -14,9 +14,9 @@ const Lists = ({ text, id }) => {
   code to use different URLs for the API depending on whether it is running in a
   development or production environment. */
   if(import.meta.env.VITE_NODE_ENV === 'development'){
-    var url = import.meta.env.VITE_PRIVATE_URL+`/api/goals/${id}`;
+    var url = import.meta.env.VITE_PRIVATE_URL;
   }else if(import.meta.env.VITE_NODE_ENV === 'production'){
-    var url = import.meta.env.VITE_PUBLIC_URL+`/api/goals/${id}`;
+    var url = import.meta.env.VITE_PUBLIC_URL;
   }
 
 
@@ -29,7 +29,7 @@ const Lists = ({ text, id }) => {
   console. */
   const handleDelete = async () => {
     try {
-      const response = await axios.delete(url);
+      const response = await axios.delete(url+`/api/goals/${id}`);
       // Handle the response if needed
       console.log(response.data);
       console.log('Deleted', id);

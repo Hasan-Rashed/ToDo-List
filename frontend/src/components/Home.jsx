@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Button, FormGroup, TextField } from '@mui/material';
 import Lists from './Lists';
 import axios from 'axios';
-import RingLoader from "react-spinners/RingLoader";
 import { DataProvider } from '../context/Context';
 import { HashLoader } from 'react-spinners';
 

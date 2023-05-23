@@ -21,7 +21,7 @@ const Home = () => {
   code to use different URLs for the API depending on whether it is running in a
   development or production environment. */
   if(import.meta.env.VITE_NODE_ENV === 'development'){
-    var url = import.meta.env.VITE_PRIVATE_URL+`/api/goals`;
+    var url = import.meta.env.VITE_PRIVATE_URL;
   }else if(import.meta.env.VITE_NODE_ENV === 'production'){
     var url = import.meta.env.VITE_PUBLIC_URL;
   }
@@ -33,7 +33,7 @@ const Home = () => {
   */
   const fetchData = async () => {
     try {
-      const response = await axios.get(url);
+      const response = await axios.get(url+`/api/goals`);
       setData(response.data);
       setLoading(false);
       // console.log(response.data);

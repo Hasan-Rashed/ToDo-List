@@ -29,7 +29,7 @@ const Lists = ({ text, id }) => {
   console. */
   const handleDelete = async () => {
     try {
-      const response = await axios.delete(`https://todo-list-backend.up.railway.app/api/goals/${id}`);
+      const response = await axios.delete(`https://todolistbackend.up.railway.app/api/goals/${id}`);
       // Handle the response if needed
       console.log(response.data);
       console.log('Deleted', id);

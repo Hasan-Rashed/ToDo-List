@@ -37,7 +37,7 @@ const UpdateToDo = () => {
      */
     const handleUpdateRequest = async () => {
         try {
-        const response = await axios.put(`https://todo-list-backend.up.railway.app/api/goals/${id}`, { text });
+        const response = await axios.put(`https://todolistbackend.up.railway.app/api/goals/${id}`, { text });
         // Handle the response if needed
         console.log(response.data);
         console.log(text);

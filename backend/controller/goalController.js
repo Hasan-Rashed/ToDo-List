@@ -1,5 +1,5 @@
 const asyncHandler = require('express-async-handler'); 
-const Goal = require('../model/goalModel');
+const Goal = require('../models/goalModel');
 
 
 // using express-async-handler to handle errors instead of try catch blocks

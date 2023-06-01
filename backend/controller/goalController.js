@@ -2,9 +2,12 @@ const asyncHandler = require('express-async-handler');
 const Goal = require('../models/goalModel');
 
 
+// @desc Get goals
+// @route GET /api/goals
+// @access Private
 // using express-async-handler to handle errors instead of try catch blocks
 const getGoals = asyncHandler(async (req, res) => {
-    const goals = await Goal.find();
+    const goals = await Goal.find({ user: req.user.id }); // user field on goal relationship to User model
     
     res.status(200)
     .json(goals)

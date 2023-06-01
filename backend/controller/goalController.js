@@ -21,7 +21,12 @@ const setGoals = asyncHandler(async (req, res) => {
     }
 
     const goal = await Goal.create({
-        text: req.body.text
+        text: req.body.text,
+        /* `user: req.user.id` is setting the `user` field of a `Goal` document to the `id`
+        of the currently authenticated user making the request. This is used to
+        establish a relationship between the `Goal` model and the `User` model, allowing
+        for querying and filtering of goals by user. */
+        user: req.user.id
     })
     
     res.status(200)

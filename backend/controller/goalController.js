@@ -1,5 +1,6 @@
 const asyncHandler = require('express-async-handler'); 
 const Goal = require('../models/goalModel');
+const User = require('../models/userModel');
 
 
 // @desc Get goals
@@ -26,7 +27,7 @@ const setGoals = asyncHandler(async (req, res) => {
         of the currently authenticated user making the request. This is used to
         establish a relationship between the `Goal` model and the `User` model, allowing
         for querying and filtering of goals by user. */
-        user: req.user.id
+        user: req.user.id // user field on goal relationship to User model to create goal
     })
     
     res.status(200)
@@ -42,6 +43,22 @@ const updateGoal = asyncHandler(async (req, res) => {
         res.status(400)
         throw new Error('Goal not found')
     }
+
+
+    const user = await User.findById(req.user.id); // req.user.id is the id of the currently authenticated user making the request
+
+    // check for user
+    if(!user){
+        res.status(401) // 401 is unauthorized
+        throw new Error('User not found')
+    }
+
+    // make sure the logged in user matches the goal user
+    if(goal.user.toString() !== user.id){
+        res.status(401) // 401 is unauthorized
+        throw new Error('User not authorized')
+    }
+    
 
     const updatedGoal = await Goal.findByIdAndUpdate(req.params.id, req.body, {new: true})
 
